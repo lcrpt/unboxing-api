@@ -4,9 +4,7 @@ export default (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate(models) {
-        Orders.belongsTo(models.Users);
-        Orders.belongsTo(models.Drivers);
-        Orders.hasOne(models.Items);
+        Orders.hasOne(models.items);
       }
     }
   });

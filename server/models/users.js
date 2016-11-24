@@ -2,15 +2,16 @@ export default (sequelize, DataTypes) => {
   const Users = sequelize.define('users', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.TEXT
+    password: DataTypes.TEXT,
+    roles: DataTypes.STRING,
   }, {
     classMethods: {
       associate(models) {
-        Users.hasMany(models.Orders, {
+        Users.hasMany(models.orders, {
           onDelete: 'cascade'
         });
 
-        Users.hasMany(models.Addresses, {
+        Users.hasMany(models.addresses, {
           onDelete: 'cascade'
         });
       }
