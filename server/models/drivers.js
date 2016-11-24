@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Users = sequelize.define('users', {
+  var Drivers = sequelize.define('drivers', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.TEXT
@@ -10,6 +10,6 @@ export default (sequelize, DataTypes) => {
       }
     }
   });
-
-  return Users;
+  
+  return Drivers;
 };
