@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = {
-  up: function(queryInterface, Sequelize) {
+  up(queryInterface, Sequelize) {
     return queryInterface.createTable('orders', {
       id: {
         allowNull: false,
@@ -9,7 +10,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       delivery_date: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false,
+        validate: {
+          isDate: true,
+        },
+      },
+      customer_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isInt: true,
+        },
+      },
+      driver_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isInt: true,
+        },
       },
       created_at: {
         allowNull: false,
@@ -21,7 +40,7 @@ module.exports = {
       }
     });
   },
-  down: function(queryInterface, Sequelize) {
+  down(queryInterface, Sequelize) {
     return queryInterface.dropTable('orders');
   }
 };

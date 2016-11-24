@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = {
-  up: function(queryInterface, Sequelize) {
+  up(queryInterface, Sequelize) {
     return queryInterface.createTable('items', {
       id: {
         allowNull: false,
@@ -9,16 +10,41 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [10, 150],
+            msg: 'Should have a length of 10 to 150 characters',
+          },
+        },
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [10, 250],
+            msg: 'Should have a length of 10 to 1000 characters',
+          },
+        },
       },
       image: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
+        validate: {
+          len: {
+            args: [10, 250],
+            msg: 'Should have a length of 10 to 250 characters',
+          },
+        },
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isNumeric: true,
+        }
       },
       created_at: {
         allowNull: false,
@@ -30,7 +56,7 @@ module.exports = {
       }
     });
   },
-  down: function(queryInterface, Sequelize) {
+  down(queryInterface, Sequelize) {
     return queryInterface.dropTable('items');
   }
 };
