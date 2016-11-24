@@ -2,18 +2,16 @@
   "name": "unboxing-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "SET NODE_ENV=dev && nodemon server.js",
+    "start": "nodemon server.js",
     "dev": "babel-node server.js",
     "test": "mocha --timeout 10000 --compilers js:babel-core/register"
   },
   "dependencies": {
-    "body-parser": "^1.15.1",
-    "config": "^1.20.1",
     "express": "^4.13.4",
-    "mongoose": "^4.4.15",
-    "morgan": "^1.7.0"
+    "mysql": "^2.12.0",
+    "sequelize": "^3.27.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
