@@ -1,13 +1,7 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Addresses = sequelize.define('Addresses', {
+export default (sequelize, DataTypes) => {
+  const Addresses = sequelize.define('addresses', {
     address: DataTypes.TEXT
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
   return Addresses;
 };

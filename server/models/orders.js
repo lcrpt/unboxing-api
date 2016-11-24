@@ -1,13 +1,13 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Orders = sequelize.define('Orders', {
+export default (sequelize, DataTypes) => {
+  const Orders = sequelize.define('orders', {
     delivery_date: DataTypes.DATE
   }, {
     classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+      associate(models) {
+        Orders.hasOne(models.items);
       }
     }
   });
+
   return Orders;
 };

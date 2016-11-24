@@ -1,16 +1,22 @@
-'use strict';
-module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define('Users', {
+export default (sequelize, DataTypes) => {
+  const Users = sequelize.define('users', {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.TEXT,
-    role: DataTypes.STRING
+    roles: DataTypes.STRING,
   }, {
     classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+      associate(models) {
+        Users.hasMany(models.orders, {
+          onDelete: 'cascade'
+        });
+
+        Users.hasMany(models.addresses, {
+          onDelete: 'cascade'
+        });
       }
     }
   });
+
   return Users;
 };
