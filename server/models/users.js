@@ -6,7 +6,13 @@ export default (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate(models) {
+        Users.hasMany(models.Orders, {
+          onDelete: 'cascade'
+        });
 
+        Users.hasMany(models.Addresses, {
+          onDelete: 'cascade'
+        });
       }
     }
   });

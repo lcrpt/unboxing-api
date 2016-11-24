@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) => {
-  const addresses = sequelize.define('addresses', {
+  const Addresses = sequelize.define('addresses', {
     address: DataTypes.TEXT
   }, {
     classMethods: {
       associate(models) {
-
+        Addresses.belongsTo(models.Users);
       }
     }
   });
-  
+
   return addresses;
 };
