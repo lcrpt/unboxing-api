@@ -1,10 +1,16 @@
-var models = require('./server/models/');
+import express from 'express';
+import routes from './server/routes';
+import bodyParser from 'body-parser';
 
-models.sequelize
-  .authenticate()
-  .then(function () {
-    console.log('Connection successful');
-  })
-  .catch(function(error) {
-    console.log("Error creating connection:", error);
-  });
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(routes(express.Router()));
+
+app.set('port', process.env.PORT || 3000);
+
+app.listen(app.get('port'), () => {
+  console.log(`App listening on port ${app.get('port')}`);
+});
