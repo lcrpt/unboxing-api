@@ -2,6 +2,7 @@ import users from '../controllers/users';
 import items from '../controllers/items';
 import addresses from '../controllers/addresses';
 import orders from '../controllers/orders';
+import itemsRoute from './items';
 
 export default (router) => {
   router.get('/users', users.getUsers);
@@ -10,11 +11,7 @@ export default (router) => {
   // router.put('/users/:id', users.updateUser);
   // router.delete('/users/:id', users.deleteUser);
 
-  router.get('/items', items.getItems);
-  router.get('/items/:id', items.getItem);
-  // router.post('/items', items.postItem);
-  // router.put('/items/:id', items.updateItem);
-  // router.delete('/items/:id', items.deleteItem);
+  itemsRoute(router);
 
   router.get('/addresses', addresses.getAddresses);
   router.get('/addresses/:id', addresses.getAddress);
