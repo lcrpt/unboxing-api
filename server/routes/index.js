@@ -1,7 +1,7 @@
 import users from '../controllers/users';
 import items from '../controllers/items';
 import addresses from '../controllers/addresses';
-import orders from '../controllers/orders';
+import ordersRoute from './orders';
 import itemsRoute from './items';
 
 export default (router) => {
@@ -19,11 +19,7 @@ export default (router) => {
   // router.put('/addresses/:id', addresses.updateAddress);
   // router.delete('/addresses/:id', addresses.deleteAddress);
 
-  router.get('/orders', orders.getOrders);
-  router.get('/orders/:id', orders.getOrder);
-  // router.post('/orders', orders.postOrder);
-  // router.put('/orders/:id', orders.updateOrder);
-  // router.delete('/orders/:id', orders.deleteOrder);
+  ordersRoute(router);
 
   return router;
 };
