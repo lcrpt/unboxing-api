@@ -1,4 +1,4 @@
-import Orders from '../models/orders';
+const Orders = require('../models/').Orders;
 
 export default {
   getOrders(req, res) {

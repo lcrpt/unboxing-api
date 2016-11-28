@@ -1,4 +1,4 @@
-import Addresses from '../models/addresses';
+const Addresses = require('../models/').Addresses;
 
 export default {
   getAddresses(req, res) {

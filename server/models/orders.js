@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-  const Orders = sequelize.define('orders', {
+  const Orders = sequelize.define('Orders', {
     delivery_date: {
       type: Sequelize.DATE,
       allowNull: false,
@@ -23,22 +23,30 @@ export default (sequelize, DataTypes) => {
         isInt: true,
       },
     },
+    item_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+      },
+    },
   }, {
+    underscored: true,
     classMethods: {
       associate(models) {
-        Orders.hasOne(models.items);
+        Orders.belongsTo(models.Items, {
+          foreignKey: 'item_id',
+        });
 
-        Orders.belongsTo(models.users, {
+        Orders.belongsTo(models.Users, {
           foreignKey: 'customer_id',
-          as: 'customer',
         });
 
-        Orders.belongsTo(models.users, {
+        Orders.belongsTo(models.Users, {
           foreignKey: 'picker_id',
-          as: 'picker',
         });
-      }
-    }
+      },
+    },
   });
 
   return Orders;

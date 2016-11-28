@@ -1,4 +1,4 @@
-import Users from '../models/users';
+const Users = require('../models/').Users;
 
 export default {
   getUsers(req, res) {

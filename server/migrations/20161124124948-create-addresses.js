@@ -2,7 +2,7 @@
 
 module.exports = {
   up(queryInterface, Sequelize) {
-    return queryInterface.createTable('addresses', {
+    return queryInterface.createTable('Addresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,6 +17,13 @@ module.exports = {
             args: [10, 250],
             msg: 'Should have a length of 10 to 250 characters',
           },
+        },
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isInt: true,
         },
       },
       created_at: {

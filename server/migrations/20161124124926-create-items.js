@@ -2,7 +2,7 @@
 
 module.exports = {
   up(queryInterface, Sequelize) {
-    return queryInterface.createTable('items', {
+    return queryInterface.createTable('Items', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -45,6 +45,13 @@ module.exports = {
         validate: {
           isNumeric: true,
         }
+      },
+      order_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          isInt: true,
+        },
       },
       created_at: {
         allowNull: false,

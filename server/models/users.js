@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 import bcrypt from 'bcryptjs';
 
 export default (sequelize, DataTypes) => {
-  const Users = sequelize.define('users', {
+  const Users = sequelize.define('Users', {
     username: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -46,6 +46,7 @@ export default (sequelize, DataTypes) => {
       },
     },
   }, {
+    underscored: true,
     hooks: {
       afterValidate(user) {
         user.password = bcrypt.hashSync(user.password, 8);
@@ -53,18 +54,20 @@ export default (sequelize, DataTypes) => {
     },
     classMethods: {
       associate(models) {
-        Users.hasMany(models.orders, {
+        Users.hasMany(models.Orders, {
           onDelete: 'cascade',
           onUpdate: 'cascade',
           foreignKey: 'customer_id',
         });
 
-        Users.hasMany(models.orders, {
+        Users.hasMany(models.Orders, {
           foreignKey: 'picker_id',
         });
 
-        Users.hasMany(models.addresses, {
+        Users.hasMany(models.Addresses, {
           onDelete: 'cascade',
+          onUpdate: 'cascade',
+          foreignKey: 'user_id',
         });
       },
     },
