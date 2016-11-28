@@ -1,4 +1,4 @@
-import Items from '../models/items';
+const Items = require('../models/').Items;
 
 export default {
   getItems(req, res) {

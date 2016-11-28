@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-  const Items = sequelize.define('items', {
+  const Items = sequelize.define('Items', {
     name: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -39,6 +39,22 @@ export default (sequelize, DataTypes) => {
         isNumeric: true,
       }
     },
+    order_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt: true,
+      },
+    },
+  }, {
+    underscored: true,
+    // classMethods: {
+    //   associate(models) {
+    //     Items.belongsTo(models.Orders, {
+    //       foreignKey: 'item_id',
+    //     });
+    //   },
+    // },
   });
 
   return Items;
