@@ -23,7 +23,7 @@ module.exports = {
           isInt: true,
         },
       },
-      driver_id: {
+      picker_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {

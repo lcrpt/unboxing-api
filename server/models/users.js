@@ -54,14 +54,20 @@ export default (sequelize, DataTypes) => {
     classMethods: {
       associate(models) {
         Users.hasMany(models.orders, {
-          onDelete: 'cascade'
+          onDelete: 'cascade',
+          onUpdate: 'cascade',
+          foreignKey: 'customer_id',
+        });
+
+        Users.hasMany(models.orders, {
+          foreignKey: 'picker_id',
         });
 
         Users.hasMany(models.addresses, {
-          onDelete: 'cascade'
+          onDelete: 'cascade',
         });
-      }
-    }
+      },
+    },
   });
 
   return Users;
