@@ -1,15 +1,11 @@
-import users from '../controllers/users';
-import items from '../controllers/items';
+import usersRoute from './users';
+import addresses from '../controllers/addresses';
 import addressesRoute from './addresses';
 import ordersRoute from './orders';
 import itemsRoute from './items';
 
 export default (router) => {
-  router.get('/users', users.getUsers);
-  router.get('/users/:id', users.getUser);
-  // router.post('/users', users.postUser);
-  // router.put('/users/:id', users.updateUser);
-  // router.delete('/users/:id', users.deleteUser);
+  usersRoute(router);
   addressesRoute(router);
   itemsRoute(router);
   
