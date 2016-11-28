@@ -36,7 +36,7 @@ export default {
   },
 
   deleteAddress(req, res) {
-    Addresses.delete({
+    Addresses.destroy({
       where: { id: req.params.id },
     }).then((deletedAddress) => {
       res.status(200).json(deletedAddress);
