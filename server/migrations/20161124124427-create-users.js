@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-          isIn: [['customer', 'driver']],
+          isIn: [['customer', 'picker']],
           len: {
             args: [5, 9],
             msg: 'Should have a length of 5 to 9 characters',
