@@ -45,6 +45,13 @@ export default (sequelize, DataTypes) => {
         },
       },
     },
+    address_id: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      validate: {
+        isInt: true,
+      },
+    },
   }, {
     underscored: true,
     hooks: {
@@ -61,13 +68,15 @@ export default (sequelize, DataTypes) => {
         });
 
         Users.hasMany(models.Orders, {
+          onDelete: 'cascade',
+          onUpdate: 'cascade',
           foreignKey: 'picker_id',
         });
 
-        Users.hasMany(models.Addresses, {
+        Users.hasOne(models.Addresses, {
           onDelete: 'cascade',
           onUpdate: 'cascade',
-          foreignKey: 'user_id',
+          foreignKey: 'address_id',
         });
       },
     },
